@@ -78,3 +78,14 @@ zlabel ('weight')
 %w1 = [59:10:180];
 %h1 = [130:10:210];
 %[X,Y] = meshgrid (w1,h1);
+
+%% Testing our fitQuadModels function
+x = MedData.Age;
+y = MedData.BPDiff;
+modelCoeffs = fitQuadModels (x,y)
+
+%% 2D test
+height = MedData.Height;
+weight = MedData.Weight;
+waist = MedData.Waist;
+modelCoeffs = fitQuadModels([height waist], weight)
