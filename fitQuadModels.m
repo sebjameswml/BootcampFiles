@@ -12,7 +12,7 @@ function [ modelCoeffs ] = fitQuadModels (X, y)
 modelCoeffs = fitModel (XClean, yClean);
 
 % Visualise results
-visResults (X, y, XClean, yClean, modelCoeffs);
+%visResults (X, y, XClean, yClean, modelCoeffs);
 
 end % fitQuadModels
 
