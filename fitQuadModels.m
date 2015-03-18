@@ -5,14 +5,14 @@ function [ modelCoeffs ] = fitQuadModels (X, y)
 % returns model coefficients for a quadratic fit.
 % See also surf, meshgrid, linspace
 
-% Clean the data
-[XClean, yClean] = removeNaNs (X, y);
+    % Clean the data
+    [XClean, yClean] = removeNaNs (X, y);
 
-% Fit the model
-modelCoeffs = fitModel (XClean, yClean);
+    % Fit the model
+    modelCoeffs = fitModel (XClean, yClean);
 
-% Visualise results
-%visResults (X, y, XClean, yClean, modelCoeffs);
+    % Visualise results
+    %visResults (X, y, XClean, yClean, modelCoeffs);
 
 end % fitQuadModels
 
