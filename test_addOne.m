@@ -29,9 +29,25 @@ function testColZeros(T)
     verifyEqual(T, actual, expected);
 end
 
+% A better version of the above:
+function testVector(T)
+    input = zeros(4,1);
+    expected = ones(size(input));
+    actual = addOne(input);
+    % Note use of abstol to avoid precision errors:
+    verifyEqual(T, actual, expected, 'AbsTol', 1e-6);
+end
+
 function testEye(T)
     input = eye(2);
     expected = [2,1;1,2];
     actual = addOne(input);
+    verifyEqual(T, actual, expected);
+end
+
+function testMike(T)
+    input = 'Mike';
+    expected = 'Njlf';
+    actual = char(addOne(input));
     verifyEqual(T, actual, expected);
 end
