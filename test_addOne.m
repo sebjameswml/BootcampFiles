@@ -14,3 +14,24 @@ function testScalarDouble(T)
     verifyEqual(T, actual, expected);
 end
 
+function testComplex(T)
+    input = 3+5i;
+    expected = 4+5i;
+    actual = addOne(input);
+    verifyEqual(T, actual, expected);
+end
+
+% Exercise: Two more tests for inputs [0;0;0;0] and eye(2)
+function testColZeros(T)
+    input = [0;0;0;0];
+    expected = [1;1;1;1];
+    actual = addOne(input);
+    verifyEqual(T, actual, expected);
+end
+
+function testEye(T)
+    input = eye(2);
+    expected = [2,1;1,2];
+    actual = addOne(input);
+    verifyEqual(T, actual, expected);
+end
