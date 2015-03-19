@@ -55,3 +55,30 @@ function testMike(T)
     actual = char(addOne(input));
     verifyEqual(T, actual, expected);
 end
+
+% Verify we get an error for the wrong input arguments
+function testNargin(T)
+    % Test with zero inputs
+    codeToEvaluate = @() addOne();
+    verifyError(T, codeToEvaluate, 'MATLAB:narginchk:notEnoughInputs');
+
+    % Test with too many inputs
+    codeToEvaluate = @() addOne(1, 1);
+    verifyError(T, codeToEvaluate, 'MATLAB:TooManyInputs');
+end
+
+% Verify behaviour with empty input
+function testEmpty(T)
+    codeToEvaluate = @() addOne([]);
+    verifyError(T, codeToEvaluate, 'MATLAB:expectedNonempty');
+end
+
+% Test what happens for NaN/Inf
+function testNaNInf(T)
+    verifyEqual(T, addOne(NaN), NaN);
+    verifyEqual(T, addOne(Inf), Inf);
+    verifyEqual(T, addOne(-Inf), -Inf);
+end
+
+% Tip: See MException.last to see last exception. Can also access
+% MXException.last.identifier.
