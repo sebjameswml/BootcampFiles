@@ -5,6 +5,10 @@ function tests = test_addOne()
     tests = functiontests(localfunctions());
 end % test_addOne
 
+% It's ok to have apparently unused functions in this file, because they're
+% all called in localfunctions()
+%#ok<*DEFNU>
+
 % T is the test object. It's used to record the results of this test.
 function testScalarDouble(T)
     input = 1;
