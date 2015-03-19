@@ -18,8 +18,8 @@ end % fitQuadModels
 
 % This is a private function. Not callable from elsewhere.
 function [XClean, yClean] = removeNaNs (X, y)
-    missingVals = any ([X, y], 2);
-    XClean = X(~missingVals);
+    missingVals = any (isnan([X, y]), 2);
+    XClean = X(~missingVals, :);
     yClean = y(~missingVals);
 end % removeNaNs
 
