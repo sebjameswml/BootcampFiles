@@ -5,6 +5,9 @@ function [ modelCoeffs ] = fitQuadModels (X, y)
 % returns model coefficients for a quadratic fit.
 % See also surf, meshgrid, linspace
 
+    % Check we have exactly 2 inputs
+    narginchk (2, 2);
+
     % Validate X. array, type, attributes are the args:
     validateattributes (X, {'double'}, {'2d', 'real', 'nonempty'});
     if size (X, 2) > 2
