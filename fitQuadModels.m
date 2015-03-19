@@ -7,12 +7,17 @@ function [ modelCoeffs ] = fitQuadModels (X, y)
 
     % Validate X. array, type, attributes are the args:
     validateattributes (X, {'double'}, {'2d', 'real', 'nonempty'});
-    validateattributes (y, {'double'}, {'column', 'real', 'nonempty'});
     if size (X, 2) > 2
         error ('figQuadModels:TooManyCols', 'X must have one or two columns');
     end
     if any (isinf (X(:)))
-        error ('fitQuadModels:InfValues', 'X cannot contain Inf or -Inf');
+        error ('fitQuadModels:InfValues_X', 'X cannot contain Inf or -Inf');
+    end
+
+    % Validate y
+    validateattributes (y, {'double'}, {'column', 'real', 'nonempty'});
+    if any (isinf (y))
+        error ('fitQuadModels:InfValues_y', 'y cannot contain Inf or -Inf');
     end
 
     % Clean the data
