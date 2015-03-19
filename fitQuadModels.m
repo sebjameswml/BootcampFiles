@@ -5,6 +5,16 @@ function [ modelCoeffs ] = fitQuadModels (X, y)
 % returns model coefficients for a quadratic fit.
 % See also surf, meshgrid, linspace
 
+    % Validate X. array, type, attributes are the args:
+    validateattributes (X, {'double'}, {'2d', 'real', 'nonempty'});
+    validateattributes (y, {'double'}, {'column', 'real', 'nonempty'});
+    if size (X, 2) > 2
+        error ('figQuadModels:TooManyCols', 'X must have one or two columns');
+    end
+    if any (isinf (X(:)))
+        error ('fitQuadModels:InfValues', 'X cannot contain Inf or -Inf');
+    end
+
     % Clean the data
     [XClean, yClean] = removeNaNs (X, y);
 
