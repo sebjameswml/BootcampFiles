@@ -1,5 +1,5 @@
 %% Interactive prototyping
-load S02_MedData
+load Reference/S02_MedData
 
 %% Basic data exploration
 figure
